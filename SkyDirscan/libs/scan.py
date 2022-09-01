@@ -1,11 +1,23 @@
-import requests
-import os
-from random import choice
-from concurrent.futures import ThreadPoolExecutor as Pool
-from concurrent.futures import wait
-from threading import Lock
-from sys import exit
-from colorama import init, Fore
+try:
+    import requests
+    import os
+    from random import choice
+    from concurrent.futures import ThreadPoolExecutor as Pool
+    from concurrent.futures import wait
+    from threading import Lock
+    from sys import exit
+    from colorama import init, Fore
+except ImportError:
+    import os
+    os.system('pip3 install requests')
+    os.system('pip3 install colorama')
+    import requests
+    from random import choice
+    from concurrent.futures import ThreadPoolExecutor as Pool
+    from concurrent.futures import wait
+    from threading import Lock
+    from sys import exit
+    from colorama import init, Fore
 
 class Scan:
     def __init__(self, help, root):
