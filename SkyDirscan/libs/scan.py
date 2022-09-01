@@ -8,9 +8,10 @@ from sys import exit
 from colorama import init, Fore
 
 class Scan:
-    def __init__(self, help):
+    def __init__(self, help, root):
         init(autoreset = True)
         self.help = help
+        self.root = root
         self.lock = Lock()
         self.code = {
             '200' : Fore.GREEN,
@@ -19,7 +20,7 @@ class Scan:
             '500' : Fore.RED
             }
 
-        with open('D:/Tools/Web/DirScanner/skyscan/Windows/2.2/file/User-Agent.txt') as headers:
+        with open(self.root + '/file/User-Agent.txt') as headers:
             self.headers = headers.read().split('\n')
             if '' in self.headers:
                 self.headers.remove('')
@@ -56,7 +57,7 @@ class Scan:
         #check dictionary file
 
         if file == None:
-            self.file = 'D:/Tools/Web/DirScanner/skyscan/Windows/2.2/file/dicc.txt'
+            self.file = self.root + '/file/dicc.txt'
         else:
             try:
                 f = open(file)
@@ -66,7 +67,7 @@ class Scan:
                 print(Fore.RED + '[-]ERROR: Can\'t find the file.')
                 print(Fore.YELLOW + '[?]Continue with local file?(y/n)')
                 if input() == 'y':
-                    self.file = 'D:/Tools/Web/DirScanner/skyscan/Windows/2.2/file/dicc.txt'
+                    self.file = self.root + '/file/dicc.txt'
                 else:
                     exit()
 

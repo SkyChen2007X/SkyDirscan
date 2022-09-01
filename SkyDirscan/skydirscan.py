@@ -21,6 +21,7 @@ optional arguments:
 '''
 
 import argparse
+import os
 from sys import exit
 from colorama import init, Fore
 from libs.scan import Scan
@@ -47,6 +48,7 @@ Name: SkyDirscan
 
 
     print(Fore.GREEN + icon)
+    path = os.getcwd()
     
     
     p = argparse.ArgumentParser(description = 'A tool to scan the dir from the target')
@@ -65,7 +67,7 @@ Name: SkyDirscan
     file = args.file
     proxy = args.proxy
 
-    scan = Scan(help)
+    scan = Scan(help, path)
     scan.check_options(url, thread, file, timeout, proxy, status)
     scan.scan()
 
