@@ -48,7 +48,9 @@ Name: SkyDirscan
 
 
     print(Fore.GREEN + icon)
-    path = os.getcwd()
+    temp_path = __file__.split('\\')
+    temp_path.pop()
+    path = '/'.join(temp_path)
     
     
     p = argparse.ArgumentParser(description = 'A tool to scan the dir from the target')
